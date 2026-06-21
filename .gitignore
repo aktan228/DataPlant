@@ -1,0 +1,21 @@
+# Node / Next.js
+node_modules/
+.next/
+out/
+dist/
+
+# Python
+backend/.venv/
+__pycache__/
+*.pyc
+
+# Env / secrets
+.env
+
+
+# OS / editor
+.DS_Store
+Thumbs.db
+
+.claude/
+.agents/

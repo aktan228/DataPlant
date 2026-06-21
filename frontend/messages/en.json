@@ -1,0 +1,204 @@
+{
+  "common": {
+    "appName": "DataPlant",
+    "getStarted": "Get Started",
+    "viewAll": "All",
+    "back": "Back",
+    "ha": "ha",
+    "health": "Health",
+    "confidence": "Confidence",
+    "severity": "Severity",
+    "online": "Online",
+    "offline": "Offline",
+    "free": "Free",
+    "premium": "Premium",
+    "upgrade": "Upgrade",
+    "save": "Save",
+    "language": "Language"
+  },
+  "status": {
+    "healthy": "Healthy",
+    "atRisk": "At Risk",
+    "infected": "Infected"
+  },
+  "severity": {
+    "High": "High",
+    "Moderate": "Moderate",
+    "Low": "Low"
+  },
+  "priority": {
+    "High": "High",
+    "Medium": "Medium",
+    "Low": "Low"
+  },
+  "crop": {
+    "apple": "Apple",
+    "apricot": "Apricot",
+    "grape": "Grape",
+    "potato": "Potato",
+    "tomato": "Vegetables"
+  },
+  "nav": {
+    "home": "Home",
+    "map": "Map",
+    "scan": "Scan AI",
+    "ledger": "Ledger",
+    "settings": "Profile"
+  },
+  "onboarding": {
+    "version": "DataPlant AI v1.0",
+    "tagline": "An AI platform for early detection of plant diseases — photo diagnosis, drone monitoring and forecasting.",
+    "f1Title": "Instant diagnosis",
+    "f1Desc": "Analysis from camera photos and multispectral drone imagery.",
+    "f2Title": "Field health map",
+    "f2Desc": "Risk zones are color-coded — red, yellow, green.",
+    "f3Title": "Live analysis",
+    "f3Desc": "Diagnosis uses the configured cloud AI service and real uploaded images.",
+    "footer": "Built for farmers of Kyrgyzstan · MVP"
+  },
+  "dashboard": {
+    "greeting": "Good afternoon",
+    "healthIndex": "Orchard Health Index",
+    "stable": "Stable",
+    "secure": "Secure",
+    "healthHint": "Condition is optimal. Keep the scan rate at 1.5 flights/day.",
+    "weather": "Weather",
+    "sprayWindow": "Spray Window",
+    "sprayOptimal": "Optimal",
+    "sprayHint": "Wind < 4 m/s · evening spray advised",
+    "viewInstructions": "View instructions",
+    "scanBadge": "Instant diagnosis",
+    "scanTitle": "Unsure about a leaf's status?",
+    "scanDesc": "Take a photo — the AI will spot early signs of disease.",
+    "scanNow": "Scan a leaf",
+    "sectors": "Field Sectors",
+    "viewMap": "Open map",
+    "recentAlert": "Recent risk alert",
+    "configureDrone": "Configure monitoring"
+  },
+  "map": {
+    "kicker": "GIS surveillance",
+    "title": "Field Health Map",
+    "targetSector": "Selected sector",
+    "index": "Index",
+    "density": "Density",
+    "riskLevel": "Risk",
+    "riskHigh": "High",
+    "riskMid": "Mid",
+    "riskNone": "Negligible",
+    "detectedSpots": "Detected outbreaks",
+    "noPathology": "No disease detected",
+    "noPathologyHint": "The sector is completely healthy and secure.",
+    "triggerScan": "Launch drone scan",
+    "scanning": "Running multispectral scan…",
+    "scanProgress": "DRONE SWEEP: {progress}%",
+    "scale": "100 m | SCALE 1:2400"
+  },
+  "scan": {
+    "kicker": "Diagnostics center",
+    "title": "AI Plant Diagnosis",
+    "targetCrop": "Crop:",
+    "noLeaf": "No leaf selected",
+    "noLeafHint": "Snap with the camera or upload a real photo.",
+    "startCamera": "Camera",
+    "uploadLeaf": "Upload",
+    "snap": "Snap photo",
+    "cancel": "Cancel",
+    "analyzing": "Analyzing leaf…",
+    "diagnosis": "DIAGNOSIS",
+    "affectedScope": "Affected scope",
+    "dangerLevel": "Danger level",
+    "observedSymptoms": "Observed symptoms",
+    "prescribes": "AI pathologist prescribes",
+    "priority": "Priority",
+    "idealTiming": "Ideal timing",
+    "fieldAction": "Field action",
+    "toTreatment": "Go to recommendations",
+    "error": "Diagnosis service is unavailable. No placeholder result was shown.",
+    "refinedBadge": "Refined by cloud"
+  },
+  "offline": {
+    "label": "Offline mode",
+    "banner": "Offline: using the on-device model",
+    "preliminary": "Preliminary result (on-device)",
+    "refining": "Back online — refining the diagnosis in the cloud…",
+    "willSync": "Saved locally, will sync when online"
+  },
+  "premium": {
+    "lockedTitle": "Premium feature",
+    "lockedDesc": "Forecast, health map and history are available on subscription.",
+    "upgradeCta": "Get Premium",
+    "freeLimitTitle": "Free scan limit",
+    "freeLimitDesc": "You have used all {limit} free cloud scans for today. No placeholder diagnosis will be shown.",
+    "scansLeft": "Scans left today: {count}"
+  },
+  "forecast": {
+    "kicker": "Forecasting",
+    "title": "Disease Forecast",
+    "subtitle": "Based on weather and field history",
+    "weeklyRisk": "Weekly risk",
+    "peakDay": "Peak risk",
+    "peakDesc": "High humidity raises downy-mildew risk",
+    "humidity": "Humidity",
+    "temp": "Temp."
+  },
+  "recommendations": {
+    "kicker": "AI prescriptions",
+    "title": "Treatment Recommendations",
+    "priority": "Priority",
+    "timing": "Timing",
+    "appliesTo": "Sector",
+    "cat": {
+      "Chemical": "Chemical",
+      "Organic": "Organic",
+      "Preventative": "Preventative",
+      "Cultural": "Cultural"
+    }
+  },
+  "history": {
+    "kicker": "Field history",
+    "title": "Field Ledger",
+    "healthTrend": "Health trend",
+    "rainfall": "Rainfall, mm",
+    "flights": "Flights",
+    "outbreakLog": "Outbreak log",
+    "affected": "Affected",
+    "resolved": "Resolved",
+    "treatment": "Treatment"
+  },
+  "notifications": {
+    "kicker": "Alerts",
+    "title": "Notifications",
+    "markAllRead": "Mark all read",
+    "unread": "new",
+    "noAlerts": "No new alerts"
+  },
+  "profile": {
+    "kicker": "Settings",
+    "title": "Profile & Drones",
+    "account": "Account",
+    "farm": "Farm",
+    "location": "Region",
+    "subscription": "Subscription",
+    "tierFreeDesc": "Basic diagnosis, limited scans",
+    "tierPremiumDesc": "Full AI: forecast, health map, history",
+    "switchToPremium": "Switch to Premium",
+    "switchToFree": "Back to Free",
+    "drones": "Drones",
+    "battery": "Battery",
+    "lastFlight": "Last flight",
+    "altitude": "Altitude",
+    "speed": "Speed",
+    "camera": "Camera",
+    "preferences": "Preferences",
+    "notifyHighRisk": "High-risk notifications",
+    "droneAutoLaunch": "Drone auto-launch",
+    "language": "Interface language",
+    "droneStatus": {
+      "ready": "Ready",
+      "charging": "Charging",
+      "scanning": "Scanning",
+      "offline": "Offline"
+    }
+  }
+}
