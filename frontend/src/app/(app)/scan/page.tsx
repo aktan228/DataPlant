@@ -56,8 +56,8 @@ export default function ScanPage() {
   };
   useEffect(() => () => stopCamera(), []);
 
-  function saveScan(d: DiagnosisResult) {
-    addScan({
+  function buildLocalScan(d: DiagnosisResult) {
+    return {
       id: `scan-${Date.now()}`,
       crop,
       diseaseName: d.detectedDisease,
@@ -71,7 +71,7 @@ export default function ScanPage() {
       createdAt: Date.now(),
       source: "cloud",
       synced: true,
-    });
+    } as const;
   }
 
   async function runDiagnosis(b64: string, mime: string) {
@@ -98,7 +98,7 @@ export default function ScanPage() {
       registerCloudScan();
       setResult(res.analysis);
       setSource("cloud");
-      saveScan(res.analysis);
+      addScan(res.scan ?? buildLocalScan(res.analysis));
     } catch {
       setError(t("error"));
     } finally {
@@ -118,7 +118,7 @@ export default function ScanPage() {
       registerCloudScan();
       setResult(res.analysis);
       setSource("cloud");
-      saveScan(res.analysis);
+      addScan(res.scan ?? buildLocalScan(res.analysis));
     } catch {
       setError(t("error"));
     } finally {

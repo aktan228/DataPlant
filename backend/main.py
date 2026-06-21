@@ -12,8 +12,9 @@ from dotenv import load_dotenv
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
-from routers import analyze, weather
+from routers import analyze, scans, weather
 from services.gemini import get_client
+from services.supabase_db import is_configured as supabase_configured
 
 load_dotenv()
 
@@ -29,6 +30,7 @@ app.add_middleware(
 )
 
 app.include_router(analyze.router)
+app.include_router(scans.router)
 app.include_router(weather.router)
 
 
@@ -40,4 +42,5 @@ async def health() -> dict:
         "aiConfigured": get_client() is not None,
         "model": os.environ.get("OPENROUTER_MODEL", "google/gemini-2.5-flash"),
         "weatherConfigured": bool(os.environ.get("OWM_API_KEY", "").strip()),
+        "supabaseConfigured": supabase_configured(),
     }

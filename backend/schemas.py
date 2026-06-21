@@ -6,7 +6,7 @@ The response shape mirrors the contract consumed by the frontend Scan screen
 
 from __future__ import annotations
 
-from typing import List, Literal
+from typing import Any, Dict, List, Literal, Optional
 
 from pydantic import BaseModel, Field
 
@@ -36,3 +36,4 @@ class Diagnosis(BaseModel):
 
 class AnalyzeResponse(BaseModel):
     analysis: Diagnosis
+    scan: Optional[Dict[str, Any]] = None

@@ -2,6 +2,7 @@
 
 import { createContext } from "react";
 import * as React from "react";
+import { fetchScans } from "./api";
 import type {
   DroneProfile,
   FieldZone,
@@ -80,6 +81,24 @@ export function AppProvider({ children }: { children: React.ReactNode }) {
       /* ignore corrupt storage */
     }
     /* eslint-enable react-hooks/set-state-in-effect */
+  }, []);
+
+  React.useEffect(() => {
+    fetchScans()
+      .then((remoteScans) => {
+        setScans((prev) => {
+          const byId = new Map<string, ScanRecord>();
+          [...remoteScans, ...prev].forEach((scan) => byId.set(scan.id, scan));
+          const next = Array.from(byId.values())
+            .sort((a, b) => b.createdAt - a.createdAt)
+            .slice(0, 50);
+          try {
+            localStorage.setItem(SCANS_KEY, JSON.stringify(next));
+          } catch {}
+          return next;
+        });
+      })
+      .catch(() => {});
   }, []);
 
   const updatePrefs = React.useCallback(

@@ -1,4 +1,4 @@
-import type { CropKey, DiagnosisResult, ForecastDay, Locale, Localized } from "./types";
+import type { CropKey, DiagnosisResult, ForecastDay, Locale, Localized, ScanRecord } from "./types";
 
 /** Crop key -> label the backend understands (it normalises any language). */
 const CROP_LABEL: Record<CropKey, string> = {
@@ -13,6 +13,7 @@ const CROP_LABEL: Record<CropKey, string> = {
 
 export interface AnalyzeResponse {
   analysis: DiagnosisResult;
+  scan?: ScanRecord | null;
 }
 
 /**
@@ -46,6 +47,12 @@ export async function checkBackendHealth(): Promise<boolean> {
   } catch {
     return false;
   }
+}
+
+export async function fetchScans(): Promise<ScanRecord[]> {
+  const res = await fetch("/api/scans", { cache: "no-store" });
+  if (!res.ok) throw new Error(`Scans API error: ${res.status}`);
+  return res.json();
 }
 
 // ─── Weather ─────────────────────────────────────────────────────────────────
