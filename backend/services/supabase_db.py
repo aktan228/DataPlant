@@ -89,6 +89,41 @@ async def save_scan(crop: str, diagnosis: dict[str, Any]) -> dict[str, Any] | No
         return _scan_to_record(rows[0]) if rows else None
 
 
+async def list_zones() -> list[dict[str, Any]]:
+    settings = _settings()
+    if settings is None:
+        return []
+
+    url, key = settings
+    async with httpx.AsyncClient(timeout=8) as http:
+        resp = await http.get(
+            f"{url}/rest/v1/field_zones",
+            headers=_headers(key),
+            params={"select": "*", "order": "created_at.asc"},
+        )
+        resp.raise_for_status()
+
+    def _status_color(status: str) -> str:
+        return {"healthy": "green", "atRisk": "yellow", "infected": "red"}.get(status, "green")
+
+    return [
+        {
+            "id": row["id"],
+            "name": {"ru": row["name_ru"], "ky": row["name_ky"], "en": row["name_en"]},
+            "crop": row["crop"],
+            "healthScore": row["health_score"],
+            "status": row["status"],
+            "color": _status_color(row["status"]),
+            "sizeHa": float(row["size_ha"]),
+            "latitude": row["latitude"],
+            "longitude": row["longitude"],
+            "densityPercentage": max(20, row["health_score"] - 10),
+            "diseaseRisks": [],
+        }
+        for row in resp.json()
+    ]
+
+
 async def list_scans(limit: int = 50) -> list[dict[str, Any]]:
     settings = _settings()
     if settings is None:
@@ -107,3 +142,51 @@ async def list_scans(limit: int = 50) -> list[dict[str, Any]]:
         )
         resp.raise_for_status()
         return [_scan_to_record(row) for row in resp.json()]
+
+
+async def create_zone(payload: dict[str, Any]) -> dict[str, Any]:
+    settings = _settings()
+    if settings is None:
+        raise RuntimeError("Supabase not configured")
+
+    url, key = settings
+
+    def _status_color(status: str) -> str:
+        return {"healthy": "green", "atRisk": "yellow", "infected": "red"}.get(status, "green")
+
+    row = {
+        "id":          payload["id"],
+        "name_ru":     payload["name_ru"],
+        "name_ky":     payload["name_ky"],
+        "name_en":     payload["name_en"],
+        "crop":        payload["crop"],
+        "size_ha":     payload["size_ha"],
+        "health_score": payload.get("health_score", 85),
+        "status":      payload.get("status", "healthy"),
+        "latitude":    payload["latitude"],
+        "longitude":   payload["longitude"],
+    }
+
+    async with httpx.AsyncClient(timeout=8) as http:
+        resp = await http.post(
+            f"{url}/rest/v1/field_zones",
+            headers={**_headers(key), "Prefer": "return=representation"},
+            json=row,
+        )
+        resp.raise_for_status()
+        rows = resp.json()
+
+    saved = rows[0]
+    return {
+        "id": saved["id"],
+        "name": {"ru": saved["name_ru"], "ky": saved["name_ky"], "en": saved["name_en"]},
+        "crop": saved["crop"],
+        "healthScore": saved["health_score"],
+        "status": saved["status"],
+        "color": _status_color(saved["status"]),
+        "sizeHa": float(saved["size_ha"]),
+        "latitude": saved["latitude"],
+        "longitude": saved["longitude"],
+        "densityPercentage": max(20, saved["health_score"] - 10),
+        "diseaseRisks": [],
+    }

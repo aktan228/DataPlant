@@ -74,7 +74,10 @@
     "sectors": "Field Sectors",
     "viewMap": "Open map",
     "recentAlert": "Recent risk alert",
-    "configureDrone": "Configure monitoring"
+    "configureDrone": "Configure monitoring",
+    "manageZones": "Manage zones",
+    "noZones": "No zones added yet",
+    "addFirstZone": "Tap to add your first field zone"
   },
   "map": {
     "kicker": "GIS surveillance",
@@ -162,6 +165,7 @@
     "rainfall": "Rainfall, mm",
     "flights": "Flights",
     "outbreakLog": "Outbreak log",
+    "noScans": "No scans yet. Take your first leaf scan.",
     "affected": "Affected",
     "resolved": "Resolved",
     "treatment": "Treatment"
@@ -200,5 +204,25 @@
       "scanning": "Scanning",
       "offline": "Offline"
     }
+  },
+  "zones": {
+    "kicker": "Management",
+    "title": "My Fields",
+    "addZone": "Add field zone",
+    "nameRu": "Name (Russian)",
+    "nameKy": "Name (Kyrgyz)",
+    "nameEn": "Name (English)",
+    "crop": "Crop",
+    "sizeHa": "Area, ha",
+    "health": "Health",
+    "status": "Status",
+    "lat": "Latitude",
+    "lon": "Longitude",
+    "save": "Save zone",
+    "saving": "Saving...",
+    "cancel": "Cancel",
+    "saved": "Zone added! Reloading...",
+    "empty": "No zones yet",
+    "emptyHint": "Press Add field zone to create your first"
   }
 }

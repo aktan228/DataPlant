@@ -1,4 +1,4 @@
-"""OpenRouter AI client (OpenAI-compatible) with lazy initialisation."""
+﻿"""OpenRouter AI client (OpenAI-compatible) with lazy initialisation."""
 
 from __future__ import annotations
 
@@ -78,6 +78,7 @@ async def analyze_image(image_base64: str, mime_type: str, crop_type: str, local
     try:
         response = await client.chat.completions.create(
             model=model,
+            max_tokens=1024,
             messages=[
                 {"role": "system", "content": _system_instruction(locale)},
                 {

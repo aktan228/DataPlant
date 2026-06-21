@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -192,20 +192,33 @@ export default function DashboardPage() {
             <h3 className="font-mono text-xs font-bold uppercase tracking-wider text-neutral-400">
               {t("sectors")}
             </h3>
-            <button
-              onClick={() => router.push("/map")}
-              className="flex items-center text-[11px] font-bold text-brand hover:underline"
-            >
-              <span>{t("viewMap")}</span>
-              <ChevronRight className="h-3 w-3" />
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                onClick={() => router.push("/zones")}
+                className="text-[11px] font-bold text-neutral-400 hover:text-brand hover:underline"
+              >
+                + {t("manageZones")}
+              </button>
+              <button
+                onClick={() => router.push("/map")}
+                className="flex items-center text-[11px] font-bold text-brand hover:underline"
+              >
+                <span>{t("viewMap")}</span>
+                <ChevronRight className="h-3 w-3" />
+              </button>
+            </div>
           </div>
 
           <div className="space-y-2">
             {zones.length === 0 && (
-              <div className="rounded-3xl border border-slate-200/40 bg-white p-5 text-center text-xs text-neutral-400 shadow-sm">
-                No live field sectors yet.
-              </div>
+              <button
+                onClick={() => router.push("/zones")}
+                className="flex w-full flex-col items-center justify-center rounded-3xl border border-dashed border-brand/30 bg-white p-6 text-center shadow-sm hover:bg-cream/40"
+              >
+                <span className="text-2xl mb-1">🌱</span>
+                <p className="text-xs font-semibold text-neutral-600">{t("noZones")}</p>
+                <p className="text-[10px] text-brand mt-0.5">{t("addFirstZone")}</p>
+              </button>
             )}
             {zones.map((zone) => (
               <button
